@@ -1,0 +1,22 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: DSSP-TargetNode-Test-10
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/kubernetes-id: DSSP-TargetNode-Test-10
+    sonarqube.org/project-key: dssp-targetnode-test-10
+    github.com/project-slug: BackstageSSPPoC/DSSP-TargetNode-Test-10
+    argocd/app-name: dssp-targetnode-test-10-dev
+    prometheus.io/rule: "kube_pod_status_phase{pod=~'dssp-targetnode-test-10.*'}|phase,kube_pod_container_status_restarts_total{pod=~'dssp-targetnode-test-10.*'}|container"
+    prometheus.io/alert: "KubePodCrashLooping,KubeDeploymentReplicasMismatch,KubePodNotReady,KubeContainerWaiting,KubeContainerOOMKilled,KubeDeploymentRolloutStuck"
+    prometheus.io/labels: "namespace=dev"
+    grafana/overview-dashboard: 'http://34.29.242.32/grafana/d/ffuuiuytw0f0gb/backstage-view?var-pod_prefix=dssp-targetnode-test-10&var-namespace=dev&kiosk' 
+  tags:
+    - nodejs
+    - scaffolded
+spec:
+  type: service
+  lifecycle: Dev
+  owner: user:default/chaitanya-shekhar-pandey
+  system: dssp-platform
